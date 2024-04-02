@@ -1,2 +1,2 @@
-# examensarbete_dt140g
-Repo för Sofia Dahlberg och Erika Vestins examensarbete. Utveckling av MinGård för Växa Sverige
+# backend_examensarbete_dt140g
+Repo för backend till examensarbete utvecklat av Erika Vestin och Sofia Dahlberg. Examensarbetet går ut på att utveckla applikationen MinGård för Växa Sverige.
