@@ -55,9 +55,9 @@ Route::post('users/images/{id}', [UserController::class, 'updateUserImage']);
 //update user with image 
 Route::post('users/{id}', [UserController::class, 'updateUserAndImage']); 
 
-/*
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-*/
+
 
