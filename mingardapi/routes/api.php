@@ -68,9 +68,9 @@ Route::post('users/{id}', [UserController::class, 'updateUserAndImage']);
 //Delete user
 Route::delete('users/{id}', [UserController::class, 'destroyUser']); 
 
-/*
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-*/
+
 
