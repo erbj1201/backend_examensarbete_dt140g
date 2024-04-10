@@ -7,43 +7,45 @@ use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Herd;
-
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     /*get all user*/
-    public function index()
+    public function getAllUsers()
     {
         //return all 
         return User::all();
     }
 
     /*Post new user*/
-    public function store(Request $request)
-    {  //validate requested data
-       $request->validate([
-            'name' => 'required',
-           'email' => 'required|email|unique:users',
-           'password' => 'required',
-           'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
-        ]);
-        $data = $request->all();
-        //Upload images
-        if ($request->hasFile('imagepath')) {
-            $image = $request->file('imagepath');
-            //Get unique name för the image
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            //Move uploaded image to storage directory
-            $image->move(public_path('uploads'), $imageName);
-            //Create URL for uploaded image
-            $imageURL = asset('uploads/' . $imageName);
-            $data['imagepath'] = $imageURL;
-        }
-        //Store user
-        return User::create($data);
-    }
+    public function registerUser(Request $request)
+    {  
+        //validate requested data
+            $request->validate([
+                 'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required',
+                'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
+             ]);
+             $data = $request->all();
+             //Upload images
+             if ($request->hasFile('imagepath')) {
+                 $image = $request->file('imagepath');
+                 //Get unique name för the image
+                 $imageName = time() . '.' . $image->getClientOriginalExtension();
+                 //Move uploaded image to storage directory
+                 $image->move(public_path('uploads'), $imageName);
+                 //Create URL for uploaded image
+                 $imageURL = asset('uploads/' . $imageName);
+                 $data['imagepath'] = $imageURL;
+             }
+             //Store user
+             return User::create($data);
+            }
+
     /*get one user by id*/
-    public function show(string $id)
+    public function getUserById(string $id)
     {
         //find user with given id, save as variable 
         $user = user::find($id);
@@ -59,7 +61,7 @@ class UserController extends Controller
         }
     }
     /*Update user by id, without image*/
-    public function update(Request $request, string $id)
+    public function updateUser(Request $request, string $id)
     {
         //find with given id, save as variable 
         $user = User::find($id);
@@ -165,7 +167,7 @@ return response()->json([
 }
 
     /*delete user by id*/
-    public function destroy(string $id)
+    public function destroyUser(string $id)
     {
         //find with given id, save as variable 
         $user = User::find($id);
