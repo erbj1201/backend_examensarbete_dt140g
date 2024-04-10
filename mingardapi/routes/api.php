@@ -50,9 +50,9 @@ Route::get('animals/users/{id}', [UserController::class, 'getAnimalsByUser']);
 
 /*Route user*/ 
 //Log in user
-Route::login ('/login', [UserController::class, 'loginUser']);
+Route::post ('/login', [UserController::class, 'loginUser']);
 //Log out user
-Route::logout('/logout', [UserController::class, 'logoutUser']);
+Route::post('/logout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
 //Get one user by id
 Route::get('users/{id}', [UserController::class, 'getUserById']);
 //Get all users

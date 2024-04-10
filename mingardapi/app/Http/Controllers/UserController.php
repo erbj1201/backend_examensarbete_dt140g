@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Herd;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,7 +23,7 @@ class UserController extends Controller
     {  
         //validate requested data
             $request->validate([
-                 'name' => 'required',
+                'name' => 'required',
                 'email' => 'required|email|unique:users',
                 'password' => 'required',
                 'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
@@ -43,6 +43,34 @@ class UserController extends Controller
              //Store user
              return User::create($data);
             }
+
+            //login user
+            public function loginUser(Request $request){
+                $user = User::where('email', $request->email)->first();
+                if(!$user|| !Hash::check($request->password, $user->password))
+                {
+                    return response()->json([
+                        'message' => ['Username or password incorrect'],
+                    ]);
+                }
+                $user->tokens()->delete();
+
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'User logged in successfully',
+                    'name' => $user->name,
+                    'token' => $user-> createToken('auth_token')-> plainTextToken,
+                ]);
+            }
+            //logout user
+            public function logoutUser(Request $request){
+                $request->user()->currentAccessToken()->delete();
+                return response()->json(
+                    [
+                        'status' => 'success',
+                        'message' => 'User logged out successfully'
+                    ]);
+  }
 
     /*get one user by id*/
     public function getUserById(string $id)
