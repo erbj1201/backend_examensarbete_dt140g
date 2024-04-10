@@ -8,7 +8,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
+//Restricted routes, authentication
+Route::middleware(['auth:sanctum'])->group(function(){
 /*Routes herds*/
 Route::resource('herds', HerdController::class);
 //Connect herd to user when posting herd
@@ -49,24 +50,26 @@ Route::get('animals/users/{id}', [UserController::class, 'getAnimalsByUser']);
 
 
 /*Route user*/ 
-//Log in user
-Route::post ('/login', [UserController::class, 'loginUser']);
 //Log out user
 Route::post('/logout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
 //Get one user by id
 Route::get('users/{id}', [UserController::class, 'getUserById']);
 //Get all users
 Route::get('users', [UserController::class, 'getAllUsers']);
-//Register new user
-Route::post('register', [UserController::class, 'registerUser']);
-//update user without image
-Route::put ('users/{id}', [UserController::class, 'updateUser']);
 //Update just user image
 Route::post('users/images/{id}', [UserController::class, 'updateUserImage']); 
 //update user with image 
 Route::post('users/{id}', [UserController::class, 'updateUserAndImage']); 
+//update user without image
+Route::put ('users/{id}', [UserController::class, 'updateUser']);
 //Delete user
 Route::delete('users/{id}', [UserController::class, 'destroyUser']); 
+
+});
+//Register new user
+Route::post('register', [UserController::class, 'registerUser']);
+//Log in user
+Route::post ('/login', [UserController::class, 'loginUser']);
 
 
 Route::get('/user', function (Request $request) {
