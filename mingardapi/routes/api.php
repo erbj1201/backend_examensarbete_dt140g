@@ -47,8 +47,6 @@ Route::post ('messages/users/{id}', [UserController::class, 'addMessage']);
 Route::get ('messages/users/{id}', [UserController::class, 'getMessagesByUser']);
 //Get all animals for one user
 Route::get('animals/users/{id}', [UserController::class, 'getAnimalsByUser']);
-
-
 /*Route user*/ 
 //Log out user
 Route::post('/logout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
@@ -64,8 +62,9 @@ Route::post('users/{id}', [UserController::class, 'updateUserAndImage']);
 Route::put ('users/{id}', [UserController::class, 'updateUser']);
 //Delete user
 Route::delete('users/{id}', [UserController::class, 'destroyUser']); 
-
 });
+
+/*Endpoints without authorization*/
 //Register new user
 Route::post('register', [UserController::class, 'registerUser']);
 //Log in user

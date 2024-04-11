@@ -59,6 +59,7 @@ class UserController extends Controller
                     'status' => 'success',
                     'message' => 'User logged in successfully',
                     'name' => $user->name,
+                    "userId" => $user->id,
                     'token' => $user-> createToken('auth_token')-> plainTextToken,
                 ]);
             }
