@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 class MilkController extends Controller
 {
     /*get all milk*/
-    public function index()
+    public function getAllMilks()
     {
         //return all 
         return Milk::all();
     }
 
     /*get one milk by id*/
-    public function show(string $id)
+    public function getMilkById(string $id)
     {
         //find milk with given id, save as variable 
         $milk = Milk::find($id);
@@ -32,7 +32,7 @@ class MilkController extends Controller
     }
 
     /*Update milk by id*/
-    public function update(Request $request, string $id)
+    public function updateMilk(Request $request, string $id)
     {
         //find with given id, save as variable 
         $milk = Milk::find($id);
@@ -50,7 +50,7 @@ class MilkController extends Controller
     }
 
     /*delete milk by id*/
-    public function destroy(string $id)
+    public function destroyMilk(string $id)
     {
         //find with given id, save as variable 
         $milk = Milk::find($id);

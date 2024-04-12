@@ -9,27 +9,14 @@ use App\Models\Animal;
 class HerdController extends Controller
 {
     /*get all herds*/
-    public function index()
+    public function getAllHerds()
     {
         //return all herds
         return Herd::all();
     }
 
-    /*Post new herd*/
-    public function store(Request $request)
-    {
-        //validate input 
-        $request->validate([
-            //required input
-            'herdId' => 'required',
-            'address' => 'required'
-        ]);
-        //create new herd and return
-        return Herd::create($request->all());
-    }
-
     /*get one herd by id*/
-    public function show(string $id)
+    public function getHerdById(string $id)
     {
         //find herd with given id, save as variable 
         $herd = Herd::find($id);
@@ -46,7 +33,7 @@ class HerdController extends Controller
     }
 
     /*Update herd by id*/
-    public function update(Request $request, string $id)
+    public function updateHerd(Request $request, string $id)
     {
         //find herd with given id, save as variable 
         $herd = Herd::find($id);
@@ -64,7 +51,7 @@ class HerdController extends Controller
     }
 
     /*delete herd by id*/
-    public function destroy(string $id)
+    public function destroyHerd(string $id)
     {
         // find herd with given id, save as variable 
         $herd = Herd::find($id);
@@ -96,15 +83,23 @@ class HerdController extends Controller
         } //Validate data input
         $validatedData = $request->validate([
             'animalId' => 'required',
+            'earNo' => 'required',
             'breed' => 'required',
             'name' => 'required',
+            'birthDate' => 'required',
+            'sex' => 'required',
+            'category' => 'nullable',
             'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
         ]); 
         
         $animal = new Animal();
         $animal->animalId = $validatedData['animalId'];
+        $animal->earNo = $validatedData['earNo'];
         $animal->breed = $validatedData['breed'];
         $animal->name = $validatedData['name'];
+        $animal->birthDate = $validatedData['birthDate'];
+        $animal->sex = $validatedData['sex'];
+        $animal->category= $validatedData['category'];
         $animal->imagepath = $validatedData['imagepath'];
     
         //Upload images

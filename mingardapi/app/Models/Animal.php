@@ -11,10 +11,14 @@ class Animal extends Model
 
     protected $fillable = [
         'animalId',
+        'earNo',
         'breed',
         'name',
+        'birthDate',
+        'sex',
+        'category',
         'herd_id',
-        'imagepath'
+        'imagepath',
     ];
     //connect animal to herd
     public function herd()

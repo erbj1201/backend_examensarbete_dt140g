@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     /*get all messages*/
-    public function index()
+    public function getAllMessages()
     {
         //return all
         return Message::all();
     }
     /*get one message by id*/
-    public function show(string $id)
+    public function getMessageById(string $id)
     {
         //find message with given id, save as variable 
         $message = Message::find($id);
@@ -31,7 +31,7 @@ class MessageController extends Controller
     }
 
     /*Update message by id*/
-    public function update(Request $request, string $id)
+    public function updateMessage(Request $request, string $id)
     {
         //find with given id, save as variable 
         $message = Message::find($id);
@@ -49,7 +49,7 @@ class MessageController extends Controller
     }
 
     /*delete message by id*/
-    public function destroy(string $id)
+    public function destroyMessage(string $id)
     {
         //find with given id, save as variable 
         $message = Message::find($id);

@@ -9,13 +9,13 @@ use App\Models\Milk;
 class AnimalController extends Controller
 {
     /*get all animals*/
-    public function index()
+    public function getAllAnimals()
     {
         //return all animals
         return Animal::all();
     }
     /*get one animal by id*/
-    public function show(string $id)
+    public function getAnimalById(string $id)
     {
         //find animal with given id, save as variable 
         $animal = Animal::find($id);
@@ -32,7 +32,7 @@ class AnimalController extends Controller
     }
 
     /*Update animal by id*/
-    public function update(Request $request, string $id)
+    public function updateAnimal(Request $request, string $id)
     {
         //find with given id, save as variable 
         $animal = Animal::find($id);
@@ -90,8 +90,12 @@ public function updateAnimalAndImage(Request $request, string $id){
     if ($animal != null) {
         $request->validate([
             'animalId' => 'required',
+            'earNo' => 'required',
             'breed' => 'required',
             'name' => 'required',
+            'birthDate' => 'required',
+            'sex' => 'required',
+            'category' => 'required',
         ]);
         // Create an empty array 
         $data = [];
@@ -127,7 +131,7 @@ public function updateAnimalAndImage(Request $request, string $id){
 
 
     /*delete animal by id*/
-    public function destroy(string $id)
+    public function destroyAnimal(string $id)
     {
         //find with given id, save as variable 
         $animal = Animal::find($id);

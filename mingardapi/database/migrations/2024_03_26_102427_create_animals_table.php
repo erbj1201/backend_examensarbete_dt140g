@@ -13,8 +13,12 @@ return new class extends Migration {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
             $table->string('animalId', 12);
+            $table->string('earNo', 4);
             $table->string('breed', 20);
             $table->string('name', 56);
+            $table->string('birthDate', 10);
+            $table->string('sex', 4);
+            $table->string('category', 20)->nullable();
             $table->bigInteger('herd_id')->unsigned();
             $table->string('imagepath')->nullable();
             $table->timestamps();

@@ -11,15 +11,29 @@ use Illuminate\Support\Facades\Route;
 //Restricted routes, authentication
 Route::middleware(['auth:sanctum'])->group(function(){
 /*Routes herds*/
-Route::resource('herds', HerdController::class);
+
+//Get all herds
+Route::get('herds', [HerdController::class, 'getAllHerds']);
+//Get one herd by id
+Route::get('herds/{id}', [HerdController::class, 'getHerdById'] );
+//Update herd
+Route::put('herds/{id}', [HerdController::class, 'updateHerd'] );
+//Delete herd 
+Route::delete('herds/{id}', [HerdController::class, 'destroyHerd'] );
 //Connect herd to user when posting herd
 Route::post ('herds/users/{id}', [UserController::class, 'addHerd']);
 //Get all herds for one user
 Route::get ('herds/users/{id}', [UserController::class, 'getHerdsByUser']);
 
-
 /*Routes animals*/
-Route::resource('animals', AnimalController::class);
+//Get all animals
+Route::get('animals', [AnimalController::class, 'getAllAnimals']);
+//Get one animal by id
+Route::get('animals/{id}', [AnimalController::class, 'getAnimalById'] );
+//Update animal without image
+Route::put('animals/{id}', [AnimalController::class, 'updateAnimal'] );
+//Delete animal
+Route::delete('animals/{id}', [AnimalController::class, 'destroyAnimal'] );
 //Update just image on animal
 Route::post('animals/images/{id}', [AnimalController::class, 'updateAnimalImage']);
 //Update animal with image
@@ -28,10 +42,18 @@ Route::post('animals/{id}', [AnimalController::class, 'updateAnimalAndImage']);
 Route::post ('animals/herds/{id}', [HerdController::class, 'addAnimal']);
 //Get all animals for one herd
 Route::get ('animals/herds/{id}', [HerdController::class, 'getAnimalsByHerd']);
-
+//Get all animals for one user
+Route::get('animals/users/{id}', [UserController::class, 'getAnimalsByUser']);
 
 /*Routes milk*/
-Route::resource('milks', MilkController::class);
+//Get all milks
+Route::get('milks', [MilkController::class, 'getAllMilks']);
+//Get one milk by id
+Route::get('milks/{id}', [MilkController::class, 'getMilkById'] );
+//Update milk
+Route::put('milks/{id}', [MilkController::class, 'updateMilk'] );
+//Delete milk
+Route::delete('milks/{id}', [MilkController::class, 'destroyMilk'] );
 //Connect milk to animal when posting milk
 Route::post ('milks/animals/{id}', [AnimalController::class, 'addMilk']);
 //Get all milks from one animal
@@ -40,13 +62,20 @@ Route::get ('milks/animals/{id}', [AnimalController::class, 'getMilksByAnimal'])
 Route::get('milks/herds/{id}', [HerdController::class, 'getMilksByHerd']);
 
 /*Routes messages*/
-Route::resource('messages', MessageController::class);
+//Get all messages
+Route::get('messages', [MessageController::class, 'getAllMessages']);
+//Get one message by id
+Route::get('messages/{id}', [MessageController::class, 'getMessageById'] );
+//Update message
+Route::put('messages/{id}', [MessageController::class, 'updateMessage'] );
+//Delete message
+Route::delete('messages/{id}', [MessageController::class, 'destroyMessage'] );
 //Connect message to user when posting message
 Route::post ('messages/users/{id}', [UserController::class, 'addMessage']);
 //Get all messages for one user
 Route::get ('messages/users/{id}', [UserController::class, 'getMessagesByUser']);
-//Get all animals for one user
-Route::get('animals/users/{id}', [UserController::class, 'getAnimalsByUser']);
+
+
 /*Route user*/ 
 //Log out user
 Route::post('/logout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
