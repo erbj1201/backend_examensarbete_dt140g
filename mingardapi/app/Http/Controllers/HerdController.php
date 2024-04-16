@@ -89,7 +89,7 @@ class HerdController extends Controller
             'birthDate' => 'required',
             'sex' => 'required',
             'category' => 'nullable',
-            'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
+            'imagepath' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4048'
         ]); 
         
         $animal = new Animal();
@@ -100,7 +100,7 @@ class HerdController extends Controller
         $animal->birthDate = $validatedData['birthDate'];
         $animal->sex = $validatedData['sex'];
         $animal->category= $validatedData['category'];
-        $animal->imagepath = $validatedData['imagepath'];
+        
     
         //Upload images
         if ($request->hasFile('imagepath')) {
