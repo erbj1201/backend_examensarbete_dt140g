@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Animal;
 use App\Models\Milk;
+use App\Models\Calf;
+use App\Models\Medicine;
+use App\Models\Vaccine;
 
 class AnimalController extends Controller
 {
@@ -38,6 +41,15 @@ class AnimalController extends Controller
         $animal = Animal::find($id);
         //check if exist 
         if ($animal != null) {
+            $request->validate([
+                'animalId' => 'required',
+                'earNo' => 'required',
+                'breed' => 'required',
+                'name' => 'required',
+                'birthDate' => 'required',
+                'sex' => 'required',
+                'category' => 'required',
+            ]);
             //update and return updated 
             $animal->update($request->all());
             return $animal;
@@ -189,6 +201,143 @@ public function updateAnimalAndImage(Request $request, string $id){
         //Return all milks
         return $milks;
     }
+/*Calf, add calf to given animal*/
+    public function addCalf(Request $request, string $id)
+    {
+       //find with given id, save as variable 
+       $animal = Animal::find($id);
+       //check if exist 
+       if ($animal != null) {
+        $validatedData = $request->validate([
+            'animalId' => 'required',
+            'earNo' => 'required',
+            'breed' => 'required',
+            'name' => 'required',
+            'expectedBirthDate' => 'required',
+            'birthDate' => 'required',
+            'sex' => 'required',
+            'category' => 'required',
+        ]);
+        //Create new instance of class 
+        $calf = new Calf();
+        $calf->animalId = $validatedData['animalId'];
+        $calf->earNo = $validatedData['earNo'];
+        $calf->breed = $validatedData['breed'];
+        $calf->name = $validatedData['name'];
+        $calf->expectedBirthDate = $validatedData['expectedBirthDate'];
+        $calf->birthDate = $validatedData['birthDate'];
+        $calf->sex = $validatedData['sex'];
+        $calf->category = $validatedData['category'];
+        //Save animal, return 200 response ok
+        $animal->calves()->save($calf);
+        return response()->json([
+            'Calf added to animal'
+        ], 200);
+
+       }
+    }
+
+ /*Get all calves for one animal */
+ public function getCalvesByAnimal($id)
+ {    //Find animal by given id
+     $animal = Animal::find($id);
+     //If null, return 404 
+     if ($animal == null) {
+         return response()->json([
+             'Animal not found'
+         ], 404);
+     } //Find calves
+     $calves = Animal::find($id)->calves;
+     //Return all calves
+     return $calves;
+ }
+ /*Medcine, add medicine to given animal*/
+ public function addMedicine(Request $request, string $id)
+ {
+    //find with given id, save as variable 
+    $animal = Animal::find($id);
+    //check if exist 
+    if ($animal != null) {
+     $validatedData = $request->validate([
+         'date' => 'required',
+         'type' => 'required',
+         'amount' => 'required',
+         'recurrent' => 'required',
+     ]);
+     //Create new instance of class 
+     $medicine = new Medicine();
+     $medicine->date = $validatedData['date'];
+     $medicine->type = $validatedData['type'];
+     $medicine->amount = $validatedData['amount'];
+     $medicine->recurrent = $validatedData['recurrent'];
+     
+     //Save animal, return 200 response ok
+     $animal->medicine()->save($medicine);
+     return response()->json([
+         'Medicine added to animal'
+     ], 200);
+
+    }
+ }
+
+/*Get all medicines for one animal */
+public function getMedicinesByAnimal($id)
+{    //Find animal by given id
+  $animal = Animal::find($id);
+  //If null, return 404 
+  if ($animal == null) {
+      return response()->json([
+          'Animal not found'
+      ], 404);
+  } //Find calves
+  $medicines = Animal::find($id)->medicine;
+  //Return all medicines
+  return $medicines;
+}
+
+/*Vaccines*/ 
+ /*add vaccine to given animal*/
+ public function addVaccine(Request $request, string $id)
+ {
+    //find with given id, save as variable 
+    $animal = Animal::find($id);
+    //check if exist 
+    if ($animal != null) {
+     $validatedData = $request->validate([
+         'batchNo' => 'required',
+         'name' => 'required',
+         'date' => 'required',
+     ]);
+     //Create new instance of class 
+     $vaccine = new Vaccine();
+     $vaccine->batchNo = $validatedData['batchNo'];
+     $vaccine->name = $validatedData['name'];
+     $vaccine->date = $validatedData['date'];
+     
+     //Save animal, return 200 response ok
+     $animal->vaccine()->save($vaccine);
+     return response()->json([
+         'Vaccine added to animal'
+     ], 200);
+
+    }
+ }
+
+
+/*Get all vaccines for one animal */
+public function getVaccinesByAnimal($id)
+{    //Find animal by given id
+  $animal = Animal::find($id);
+  //If null, return 404 
+  if ($animal == null) {
+      return response()->json([
+          'Animal not found'
+      ], 404);
+  } //Find calves
+  $vaccines = Animal::find($id)->vaccine;
+  //Return all vaccines
+  return $vaccines;
+}
 
 }
 

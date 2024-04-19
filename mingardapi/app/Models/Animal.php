@@ -30,4 +30,21 @@ class Animal extends Model
     {
         return $this->hasMany(Milk::class);
     }
+
+      //Conntect calves to animal (mum)
+      public function calves()
+      {
+          return $this->hasMany(Calf::class);
+      }
+          //Conntect medicine to animal
+          public function medicine()
+          {
+              return $this->hasMany(Medicine::class);
+          }
+
+            //Conntect vaccine to animal
+       public function vaccine()
+       {
+           return $this->hasMany(Vaccine::class);
+       }
 }

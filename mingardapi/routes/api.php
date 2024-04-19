@@ -4,6 +4,9 @@ use App\Http\Controllers\HerdController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\MilkController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\CalfController;
+use App\Http\Controllers\VaccineController;
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +78,47 @@ Route::post ('messages/users/{id}', [UserController::class, 'addMessage']);
 //Get all messages for one user
 Route::get ('messages/users/{id}', [UserController::class, 'getMessagesByUser']);
 
+/*Routes Calves*/
+//Get all calves
+Route::get('calves', [CalfController::class, 'getAllCalves']);
+//Get one calf by id
+Route::get('calves/{id}', [CalfController::class, 'getCalfById']);
+//Update calf
+Route::put('calves/{id}', [CalfController::class, 'updateCalf'] );
+//Delete calf
+Route::delete('calves/{id}', [CalfController::class, 'destroyCalf'] );
+//Connect message to user when posting message
+Route::post ('calves/animals/{id}', [AnimalController::class, 'addCalf']);
+//Get all calves for one animal
+Route::get ('calves/animals/{id}', [AnimalController::class, 'getCalvesByAnimal']);
+
+/*Routes Medicine*/
+//Get all medicine 
+Route::get('medicines', [MedicineController::class, 'getAllMedicines']);
+//Get one medicine by id 
+Route::get('medicines/{id}', [MedicineController::class, 'getMedicineById']);
+//Update medicine 
+Route::put('medicines/{id}', [MedicineController::class, 'updateMedicine']);
+//Delete medicine
+Route::delete('medicines/{id}', [MedicineController::class, 'destroyMedicine']);
+//Connect medicine to animal when posting medicine 
+Route::post ('medicines/animals/{id}', [AnimalController::class, 'addMedicine']);
+//Get all medicine for one animal
+Route::get ('medicines/animals/{id}', [AnimalController::class, 'getMedicinesByAnimal']);
+
+/*Routes Vaccine*/
+//Get all vaccine
+Route::get('vaccines', [VaccineController::class, 'getAllVaccines']);
+//Get one medicine by id 
+Route::get('vaccines/{id}', [VaccineController::class, 'getVaccineById']);
+//Update medicine 
+Route::put('vaccines/{id}', [VaccineController::class, 'updateVaccine']);
+//Delete medicine
+Route::delete('vaccines/{id}', [VaccineController::class, 'destroyVaccine']);
+//Connect medicine to animal when posting medicine 
+Route::post ('vaccines/animals/{id}', [AnimalController::class, 'addVaccine']);
+//Get all medicine for one animal
+Route::get ('vaccines/animals/{id}', [AnimalController::class, 'getVaccinesByAnimal']);
 
 /*Route user*/ 
 //Log out user

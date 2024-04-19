@@ -25,4 +25,9 @@ class Herd extends Model
     {
         return $this->hasMany(Animal::class);
     }
+      //Conntect calf to herd
+      public function calves()
+      {
+          return $this->hasMany(Calf::class);
+      }
 }
