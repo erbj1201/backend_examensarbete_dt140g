@@ -21,13 +21,21 @@ class UserController extends Controller
     /*Post new user*/
     public function registerUser(Request $request)
     {  
+        // Custom validation for email uniqueness
+    $existingUser = User::where('email', $request->email)->first();
+    if ($existingUser) {
+        return response()->json([
+            'message' => 'Email already exists', // Anpassa meddelandet efter behov
+        ], 400); // Anpassa HTTP-statuskoden efter behov (409 betyder konflikt)
+    }
         //validate requested data
             $request->validate([
                 'name' => 'required',
-                'email' => 'required|email|unique:users',
+                'email' => 'required|email',
                 'password' => 'required',
                 'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
              ]);
+            
              $data = $request->all();
              //Upload images
              if ($request->hasFile('imagepath')) {
