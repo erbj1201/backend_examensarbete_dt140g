@@ -50,8 +50,8 @@ class UserController extends Controller
                 if(!$user|| !Hash::check($request->password, $user->password))
                 {
                     return response()->json([
-                        'message' => ['Email or password incorrect'],
-                    ]);
+                        'message' => 'Email or password incorrect',
+                    ], 404);
                 }
                 $user->tokens()->delete();
 
