@@ -18,7 +18,6 @@ class Calf extends Model
         'birthDate',
         'sex',
         'category',
-        'herd_id',
         'animal_id',
     ];
     //Connect calf to animal (mum)
