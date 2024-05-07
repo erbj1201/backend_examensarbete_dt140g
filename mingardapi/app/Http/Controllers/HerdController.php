@@ -165,13 +165,13 @@ class HerdController extends Controller
          if ($herd === null) {
              //if not exist, return 404
              return response()->json(['Herd not found'], 404);
-         } //Create an empty collection of milks
+         } //Create an empty collection of calves
          $calves = collect();
-         //Loop all animals and get milks from every animal
+         //Loop all animals and get calves from every animal
          foreach ($herd->animals as $animal) {
-             //merge animals with milks 
+             //merge animals with calves
              $calves = $calves->merge($animal->calves);
-         }//Return all milks from all animals 
+         }//Return all calves from all animals 
          return $calves;
      }
 
@@ -185,17 +185,17 @@ class HerdController extends Controller
          if ($herd === null) {
              //if not exist, return 404
              return response()->json(['Herd not found'], 404);
-         } //Create an empty collection of milks
+         } //Create an empty collection of medicines
          $medicines = collect();
-         //Loop all animals and get milks from every animal
+         //Loop all animals and get medicines from every animal
          foreach ($herd->animals as $animal) {
-             //merge animals with milks 
+             //merge animals with medicines
              $medicines = $medicines->merge($animal->medicines);
-         }//Return all milks from all animals 
+         }//Return all medicines from all animals 
          return $medicines;
      }
 
-      /*Get all medicines from one herd*/
+      /*Get all vaccines from one herd*/
       public function getVaccinesByHerd($herdId)
       {
           //Get herd by given id
@@ -204,13 +204,13 @@ class HerdController extends Controller
           if ($herd === null) {
               //if not exist, return 404
               return response()->json(['Herd not found'], 404);
-          } //Create an empty collection of milks
+          } //Create an empty collection of vaccines
           $vaccines = collect();
-          //Loop all animals and get milks from every animal
+          //Loop all animals and get vaccines from every animal
           foreach ($herd->animals as $animal) {
-              //merge animals with milks 
+              //merge animals with vaccines
               $vaccines = $vaccines->merge($animal->vaccines);
-          }//Return all milks from all animals 
+          }//Return all vaccines from all animals 
           return $vaccines;
       }
 }
