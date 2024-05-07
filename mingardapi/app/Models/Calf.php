@@ -26,9 +26,6 @@ class Calf extends Model
         return $this->belongsTo(Animal::class);
     }
     //connect calf to herd
-    public function herd()
-    {
-        return $this->belongsTo(Herd::class);
-    }
+    
 
 }
