@@ -91,6 +91,8 @@ Route::delete('calves/{id}', [CalfController::class, 'destroyCalf'] );
 Route::post ('calves/animals/{id}', [AnimalController::class, 'addCalf']);
 //Get all calves for one animal
 Route::get ('calves/animals/{id}', [AnimalController::class, 'getCalvesByAnimal']);
+//Get all calves from one herd
+Route::get('calves/herds/{id}', [HerdController::class, 'getCalvesByHerd']);
 
 /*Routes Medicine*/
 //Get all medicine 
@@ -105,6 +107,8 @@ Route::delete('medicines/{id}', [MedicineController::class, 'destroyMedicine']);
 Route::post ('medicines/animals/{id}', [AnimalController::class, 'addMedicine']);
 //Get all medicine for one animal
 Route::get ('medicines/animals/{id}', [AnimalController::class, 'getMedicinesByAnimal']);
+//Get all medicines from one herd
+Route::get('medicines/herds/{id}', [HerdController::class, 'getMedicinesByHerd']);
 
 /*Routes Vaccine*/
 //Get all vaccine
@@ -119,6 +123,8 @@ Route::delete('vaccines/{id}', [VaccineController::class, 'destroyVaccine']);
 Route::post ('vaccines/animals/{id}', [AnimalController::class, 'addVaccine']);
 //Get all medicine for one animal
 Route::get ('vaccines/animals/{id}', [AnimalController::class, 'getVaccinesByAnimal']);
+//Get all vaccines from one herd
+Route::get('vaccines/herds/{id}', [HerdController::class, 'getVaccinesByHerd']);
 
 /*Route user*/ 
 //Log out user

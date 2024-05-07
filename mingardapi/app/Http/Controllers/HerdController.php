@@ -155,4 +155,62 @@ class HerdController extends Controller
         }//Return all milks from all animals 
         return $milks;
     }
+
+     /*Get all calves from one herd*/
+     public function getCalvesByHerd($herdId)
+     {
+         //Get herd by given id
+         $herd = Herd::find($herdId);
+         //Check if herd exist
+         if ($herd === null) {
+             //if not exist, return 404
+             return response()->json(['Herd not found'], 404);
+         } //Create an empty collection of milks
+         $calves = collect();
+         //Loop all animals and get milks from every animal
+         foreach ($herd->animals as $animal) {
+             //merge animals with milks 
+             $calves = $calves->merge($animal->calves);
+         }//Return all milks from all animals 
+         return $calves;
+     }
+
+     
+     /*Get all medicines from one herd*/
+     public function getMedicinesByHerd($herdId)
+     {
+         //Get herd by given id
+         $herd = Herd::find($herdId);
+         //Check if herd exist
+         if ($herd === null) {
+             //if not exist, return 404
+             return response()->json(['Herd not found'], 404);
+         } //Create an empty collection of milks
+         $medicines = collect();
+         //Loop all animals and get milks from every animal
+         foreach ($herd->animals as $animal) {
+             //merge animals with milks 
+             $medicines = $medicines->merge($animal->medicines);
+         }//Return all milks from all animals 
+         return $medicines;
+     }
+
+      /*Get all medicines from one herd*/
+      public function getVaccinesByHerd($herdId)
+      {
+          //Get herd by given id
+          $herd = Herd::find($herdId);
+          //Check if herd exist
+          if ($herd === null) {
+              //if not exist, return 404
+              return response()->json(['Herd not found'], 404);
+          } //Create an empty collection of milks
+          $vaccines = collect();
+          //Loop all animals and get milks from every animal
+          foreach ($herd->animals as $animal) {
+              //merge animals with milks 
+              $vaccines = $vaccines->merge($animal->vaccines);
+          }//Return all milks from all animals 
+          return $vaccines;
+      }
 }
