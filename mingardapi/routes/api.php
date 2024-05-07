@@ -87,7 +87,7 @@ Route::get('calves/{id}', [CalfController::class, 'getCalfById']);
 Route::put('calves/{id}', [CalfController::class, 'updateCalf'] );
 //Delete calf
 Route::delete('calves/{id}', [CalfController::class, 'destroyCalf'] );
-//Connect message to user when posting message
+//Connect calves to animal when posting message
 Route::post ('calves/animals/{id}', [AnimalController::class, 'addCalf']);
 //Get all calves for one animal
 Route::get ('calves/animals/{id}', [AnimalController::class, 'getCalvesByAnimal']);
