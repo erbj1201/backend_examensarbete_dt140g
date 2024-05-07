@@ -172,7 +172,7 @@ return response()->json([
 public function updateUserAndImage(Request $request, string $id){
     //find with given id, save as variable 
     $user = User::find($request->id);
-    //check if exist 
+    // Check if password field is present in the request
     if ($user != null) {
         $request->validate([
             'name' => 'required',
