@@ -37,13 +37,13 @@ class Animal extends Model
           return $this->hasMany(Calf::class);
       }
           //Conntect medicine to animal
-          public function medicine()
+          public function medicines()
           {
               return $this->hasMany(Medicine::class);
           }
 
             //Conntect vaccine to animal
-       public function vaccine()
+       public function vaccines()
        {
            return $this->hasMany(Vaccine::class);
        }
