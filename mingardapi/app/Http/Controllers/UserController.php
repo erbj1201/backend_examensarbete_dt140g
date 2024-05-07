@@ -173,6 +173,16 @@ public function updateUserAndImage(Request $request, string $id){
     //find with given id, save as variable 
     $user = User::find($request->id);
     // Check if password field is present in the request
+    if ($request->has('password')) {
+        // Use Hash::check() to compare the provided password with the hashed password in the database
+        if (!Hash::check($request->password, $user->password)) {
+            // If the passwords don't match, return an error response
+            return response()->json([
+                'message' => 'Incorrect password'
+            ], 400);
+        }
+    }
+    // Check if user exists
     if ($user != null) {
         $request->validate([
             'name' => 'required',
@@ -181,7 +191,6 @@ public function updateUserAndImage(Request $request, string $id){
                 'email',
                 Rule::unique('users')->ignore($user->id), // Ignore current user's email
             ],
-           'password' => 'required'
         ]);
         // Create an empty array 
         $data = [];
