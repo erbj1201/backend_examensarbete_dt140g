@@ -139,9 +139,6 @@ public function updateAnimalAndImage(Request $request, string $id){
   return response()->json([
       'Animal not found'], 404);
     }
-    
-
-
     /*delete animal by id*/
     public function destroyAnimal(string $id)
     {
@@ -161,7 +158,6 @@ public function updateAnimalAndImage(Request $request, string $id){
             ], 404);
         }
     }
-
     /*Milks*/
     /*Add milks to given animal */
     public function addMilk(Request $request, $id)
@@ -294,7 +290,6 @@ public function getMedicinesByAnimal($id)
   //Return all medicines
   return $medicines;
 }
-
 /*Vaccines*/ 
  /*add vaccine to given animal*/
  public function addVaccine(Request $request, string $id)
@@ -322,8 +317,6 @@ public function getMedicinesByAnimal($id)
 
     }
  }
-
-
 /*Get all vaccines for one animal */
 public function getVaccinesByAnimal($id)
 {    //Find animal by given id
