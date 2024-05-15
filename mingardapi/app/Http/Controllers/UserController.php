@@ -25,8 +25,8 @@ class UserController extends Controller
     $existingUser = User::where('email', $request->email)->first();
     if ($existingUser) {
         return response()->json([
-            'message' => 'Email already exists', // Anpassa meddelandet efter behov
-        ], 400); // Anpassa HTTP-statuskoden efter behov (409 betyder konflikt)
+            'message' => 'Email already exists', 
+        ], 400); 
     }
         //validate requested data
             $request->validate([

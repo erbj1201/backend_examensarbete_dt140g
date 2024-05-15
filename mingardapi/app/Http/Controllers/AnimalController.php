@@ -272,7 +272,7 @@ public function updateAnimalAndImage(Request $request, string $id){
      $medicine->recurrent = $validatedData['recurrent'];
      
      //Save animal, return 200 response ok
-     $animal->medicine()->save($medicine);
+     $animal->medicines()->save($medicine);
      return response()->json([
          'Medicine added to animal'
      ], 200);
@@ -290,7 +290,7 @@ public function getMedicinesByAnimal($id)
           'Animal not found'
       ], 404);
   } //Find calves
-  $medicines = Animal::find($id)->medicine;
+  $medicines = Animal::find($id)->medicines;
   //Return all medicines
   return $medicines;
 }
@@ -315,7 +315,7 @@ public function getMedicinesByAnimal($id)
      $vaccine->date = $validatedData['date'];
      
      //Save animal, return 200 response ok
-     $animal->vaccine()->save($vaccine);
+     $animal->vaccines()->save($vaccine);
      return response()->json([
          'Vaccine added to animal'
      ], 200);
@@ -334,7 +334,7 @@ public function getVaccinesByAnimal($id)
           'Animal not found'
       ], 404);
   } //Find calves
-  $vaccines = Animal::find($id)->vaccine;
+  $vaccines = Animal::find($id)->vaccines;
   //Return all vaccines
   return $vaccines;
 }
