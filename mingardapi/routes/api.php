@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 //Restricted routes, authentication
 Route::middleware(['auth:sanctum'])->group(function(){
 /*Routes herds*/
-
+ 
 //Get all herds
 Route::get('herds', [HerdController::class, 'getAllHerds']);
 //Get one herd by id
