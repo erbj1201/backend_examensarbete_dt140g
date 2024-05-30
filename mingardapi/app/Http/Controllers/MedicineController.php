@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use Illuminate\Http\Request;
-
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 class MedicineController extends Controller
 {
     /*Get all medicine */

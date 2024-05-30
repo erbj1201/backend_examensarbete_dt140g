@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
