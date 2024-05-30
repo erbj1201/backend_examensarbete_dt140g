@@ -349,7 +349,7 @@ class UserController extends Controller
             //Merge herd with animals
             $animals = $animals->merge($herd->animals);
         }
-        //Return all animals from all herds from one user
+        //return all animals from all herds from one user
         return $animals;
     }
 }

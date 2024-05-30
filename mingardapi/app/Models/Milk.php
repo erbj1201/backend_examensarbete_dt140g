@@ -1,6 +1,3 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
 <?php
 
 namespace App\Models;

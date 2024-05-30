@@ -1,7 +1,3 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
-
 <?php
 /*Controller for herds*/
 namespace App\Http\Controllers;
