@@ -1,11 +1,8 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
-
 <?php
-
 namespace App\Models;
-
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

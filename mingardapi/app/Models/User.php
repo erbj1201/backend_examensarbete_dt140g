@@ -1,5 +1,8 @@
 <?php
 namespace App\Models;
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 
 use Laravel\Sanctum\HasApiTokens;
 
