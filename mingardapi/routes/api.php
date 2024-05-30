@@ -1,7 +1,3 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
-
 <?php
 //include 
 use App\Http\Controllers\HerdController;
