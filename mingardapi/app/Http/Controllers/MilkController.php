@@ -1,3 +1,7 @@
+<!--Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg -->
+
 <?php
 
 namespace App\Http\Controllers;
@@ -7,24 +11,24 @@ use Illuminate\Http\Request;
 
 class MilkController extends Controller
 {
-    /*get all milk*/
+    /*Get all milk*/
     public function getAllMilks()
     {
-        //return all 
+        //Return all 
         return Milk::all();
     }
 
-    /*get one milk by id*/
+    /*Get one milk by id*/
     public function getMilkById(string $id)
     {
-        //find milk with given id, save as variable 
+        //Find milk with given id, save as variable 
         $milk = Milk::find($id);
-        //check if exist 
+        //Check if exist 
         if ($milk != null) {
-            //return 
+            //Return 
             return $milk;
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Milk not found'
             ], 404);
@@ -34,35 +38,35 @@ class MilkController extends Controller
     /*Update milk by id*/
     public function updateMilk(Request $request, string $id)
     {
-        //find with given id, save as variable 
+        //Find with given id, save as variable 
         $milk = Milk::find($id);
-        //check if exist 
+        //Check if exist 
         if ($milk != null) {
-            //update and return updated 
+            //Update and return updated 
             $milk->update($request->all());
             return $milk;
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Milk not found'
             ], 404);
         }
     }
 
-    /*delete milk by id*/
+    /*Delete milk by id*/
     public function destroyMilk(string $id)
     {
-        //find with given id, save as variable 
+        //Find with given id, save as variable 
         $milk = Milk::find($id);
-        //check if exist 
+        //Check if exist 
         if ($milk != null) {
-            //update and return updated 
+            //Update and return updated 
             $milk->destroy($id);
             return response()->json([
                 'Milk deleted'
             ]);
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Milk not found'
             ], 404);

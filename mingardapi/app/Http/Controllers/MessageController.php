@@ -1,3 +1,6 @@
+<!--Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg --> 
 <?php
 
 namespace App\Http\Controllers;
@@ -7,23 +10,24 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    /*get all messages*/
+    /*Get all messages*/
     public function getAllMessages()
     {
-        //return all
+        //Return all
         return Message::all();
     }
-    /*get one message by id*/
+
+    /*Get one message by id*/
     public function getMessageById(string $id)
     {
-        //find message with given id, save as variable 
+        //Find message with given id, save as variable 
         $message = Message::find($id);
-        //check if exist 
+        //Check if exist 
         if ($message != null) {
-            //return 
+            //Return 
             return $message;
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Message not found'
             ], 404);
@@ -33,35 +37,35 @@ class MessageController extends Controller
     /*Update message by id*/
     public function updateMessage(Request $request, string $id)
     {
-        //find with given id, save as variable 
+        //Find with given id, save as variable 
         $message = Message::find($id);
-        //check if exist 
+        //Check if exist 
         if ($message != null) {
-            //update and return updated 
+            //Update and return updated 
             $message->update($request->all());
             return $message;
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Message not found'
             ], 404);
         }
     }
 
-    /*delete message by id*/
+    /*Delete message by id*/
     public function destroyMessage(string $id)
     {
-        //find with given id, save as variable 
+        //Find with given id, save as variable 
         $message = Message::find($id);
-        //check if exist 
+        //Check if exist 
         if ($message != null) {
-            //update and return updated 
+            //Update and return updated 
             $message->destroy($id);
             return response()->json([
                 'Message deleted'
             ]);
         } else {
-            //if not exist, return 404
+            //If not exist, return 404
             return response()->json([
                 'Message not found'
             ], 404);

@@ -1,5 +1,10 @@
+<!--Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg -->
+
 <?php
 namespace App\Models;
+
 use Laravel\Sanctum\HasApiTokens;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;

@@ -1,3 +1,7 @@
+<!--Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg -->
+
 <?php
 
 namespace App\Models;
@@ -31,20 +35,20 @@ class Animal extends Model
         return $this->hasMany(Milk::class);
     }
 
-      //Conntect calves to animal (mum)
-      public function calves()
-      {
-          return $this->hasMany(Calf::class);
-      }
-          //Conntect medicine to animal
-          public function medicines()
-          {
-              return $this->hasMany(Medicine::class);
-          }
+    //Conntect calves to animal (mum)
+    public function calves()
+    {
+        return $this->hasMany(Calf::class);
+    }
+    //Conntect medicine to animal
+    public function medicines()
+    {
+        return $this->hasMany(Medicine::class);
+    }
 
-            //Conntect vaccine to animal
-       public function vaccines()
-       {
-           return $this->hasMany(Vaccine::class);
-       }
+    //Conntect vaccine to animal
+    public function vaccines()
+    {
+        return $this->hasMany(Vaccine::class);
+    }
 }

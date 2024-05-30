@@ -1,3 +1,7 @@
+<!--Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg -->
+
 <?php
 
 namespace App\Models;
@@ -25,5 +29,5 @@ class Herd extends Model
     {
         return $this->hasMany(Animal::class);
     }
-     
+
 }
