@@ -1,9 +1,7 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
-
 <?php
-
+/**Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 namespace App\Http\Controllers;
 
 use App\Models\Milk;
