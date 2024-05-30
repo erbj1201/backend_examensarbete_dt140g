@@ -1,10 +1,9 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg --> 
 <?php
 
 namespace App\Http\Controllers;
-
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -55,17 +54,17 @@ class MessageController extends Controller
     /*Delete message by id*/
     public function destroyMessage(string $id)
     {
-        //Find with given id, save as variable 
+        //find with given id, save as variable 
         $message = Message::find($id);
-        //Check if exist 
+        //check if exist 
         if ($message != null) {
-            //Update and return updated 
+            //update and return updated 
             $message->destroy($id);
             return response()->json([
                 'Message deleted'
             ]);
         } else {
-            //If not exist, return 404
+            //if not exist, return 404
             return response()->json([
                 'Message not found'
             ], 404);

@@ -1,11 +1,9 @@
-<!--Webbutvecklingsprogrammet
-Självständigt arbete DT140G
-Erika Vestin & Sofia Dahlberg -->
-
 <?php
 /*Controller for herds*/
 namespace App\Http\Controllers;
-
+/*Webbutvecklingsprogrammet
+Självständigt arbete DT140G
+Erika Vestin & Sofia Dahlberg */
 use Illuminate\Http\Request;
 use App\Models\Herd;
 use App\Models\Animal;
